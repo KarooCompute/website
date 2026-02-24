@@ -16,8 +16,8 @@ function About() {
             <p className="bio-role">Founder</p>
             <p className="bio-text">
               I graduated from the University of Pretoria with a BScHons in Computer Science in 2022.
-              After that I worked as a software engineer for a little over two years, before making the decision to start my own company.
-              I did so out of a conviction that this project necessitates commitment to succeed.
+              After that I worked as a software engineer for over two years, before making the decision to start my own company.
+              I have a strong interest in program semantics and correctness.
             </p>
             <div className="bio-links">
               <a href="mailto:kaleb@karoocompute.com">kaleb@karoocompute.com</a>

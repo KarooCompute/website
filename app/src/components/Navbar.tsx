@@ -9,6 +9,7 @@ function Navbar() {
         </Link>
         <div className="nav-links">
           <NavLink to="/" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>Home</NavLink>
+          <NavLink to="/rose" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>Rose</NavLink>
           <NavLink to="/about" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>About</NavLink>
         </div>
       </div>
