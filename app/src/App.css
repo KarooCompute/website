@@ -98,7 +98,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem 0;
+  padding: 1.25rem 5px;
 }
 
 /* Banded sections */
@@ -191,6 +191,10 @@
 .bio-card {
   display: grid;
   grid-template-columns: 200px 1fr;
+  grid-template-areas:
+    "avatar header"
+    "avatar text"
+    "avatar links";
   gap: 1rem;
   padding: 1rem;
   border-radius: 12px;
@@ -199,6 +203,7 @@
   align-items: start;
 }
 .bio-avatar {
+  grid-area: avatar;
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -215,6 +220,9 @@
   line-height: 200px; /* center alt text vertically when image fails */
   text-align: center; /* ensure alt text centers horizontally as well */
 }
+.bio-header {
+  grid-area: header;
+}
 .bio-name {
   margin: 0;
   font-size: 1.25rem;
@@ -225,10 +233,33 @@
   opacity: .8;
 }
 .bio-text {
+  grid-area: text;
   margin: 0 0 .75rem 0;
+}
+.bio-links {
+  grid-area: links;
 }
 .bio-links a {
   color: #8fa8ff;
+}
+
+@media (max-width: 600px) {
+  .bio-card {
+    grid-template-columns: 80px 1fr;
+    grid-template-areas:
+      "avatar header"
+      "text text"
+      "links links";
+  }
+  .bio-avatar {
+    width: 80px;
+    height: 80px;
+  }
+  .bio-avatar img {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
