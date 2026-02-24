@@ -62,7 +62,7 @@ function Home() {
             We foresee a paradigm shift within Computer Science and Software Engineering where semantics and implementation will no longer be intertwined in the same representation, but will be treated as two separate concerns.
             For this to be practical, tooling will be required to "extract" the meaning (semantics) of a program out of the code it's implemented in.
             Such lifted semantics can then be used to compare implementations, prove invariants, or provide counter-examples for any discrepancies.
-            The current goal with Rose is simply to compare between two codebases to check equivalence, but many opportunities exist for future work.
+            The current goal with Rose is simply to check the equivalence of two codebases, but many opportunities exist for future work.
           </p>
           <p>
             Semantic Extraction, when combined with LLM technologies, shows promise in accelerating development speed and improving maintainability without sacrificing reliability.
