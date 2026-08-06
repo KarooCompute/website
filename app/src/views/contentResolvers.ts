@@ -13,12 +13,16 @@ export function getRightContent(_state: ContentResolverState): string {
   return ''
 }
 
-export function getLeftLanguage(_state: ContentResolverState): EditorLanguage {
-  return 'json'
+export function getLeftLanguage(state: ContentResolverState): EditorLanguage {
+  return isSourceCodeTab(state) ? 'cpp' : 'json'
 }
 
-export function getRightLanguage(_state: ContentResolverState): EditorLanguage {
-  return 'json'
+export function getRightLanguage(state: ContentResolverState): EditorLanguage {
+  return isSourceCodeTab(state) ? 'rust' : 'json'
+}
+
+export function isSourceCodeTab(state: ContentResolverState): boolean {
+  return state.blockDebugTab === 'source_code'
 }
 
 export function isTopoSmtTab(state: ContentResolverState): boolean {

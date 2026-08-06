@@ -1,0 +1,163 @@
+.equivalence-error-popover {
+  position: fixed;
+  z-index: 1000;
+  background: #1e1e1e;
+  color: #e6e6e6;
+  border: 1px solid #333;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  min-width: 320px;
+  max-width: 560px;
+  max-height: 300px;
+  overflow: auto;
+  padding: 10px;
+}
+
+.equivalence-error-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.equivalence-error-text {
+  white-space: pre-wrap;
+}
+
+.equivalence-error-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-left: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.equivalence-result-badge {
+  margin-right: 8px;
+  opacity: 0.9;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  color: #e6e6e6;
+}
+
+.equivalence-error-btn .topo-smt-status-indicator {
+  margin-right: 0;
+}
+
+.editors-header-flex {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: #2d2d2d;
+  border-bottom: 1px solid #404040;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.editor-title-panel {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 16px;
+  background: #2d2d2d;
+  border-right: 1px solid #404040;
+  gap: 12px;
+}
+
+.editor-title-panel:last-child {
+  border-right: none;
+}
+
+.editor-title-panel h2 {
+  color: #e6e6e6;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.editor-title-panel-actions {
+  display: flex;
+  align-items: center;
+}
+
+.editor-title-panel-spacer {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+}
+
+.inline-selector {
+  background: #3c3c3c;
+  border: 1px solid #555;
+  color: #e6e6e6;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 0;
+  min-width: 140px;
+  font-family: inherit;
+  height: 24px;
+  box-sizing: border-box;
+  margin-left: 8px;
+}
+
+.inline-selector:focus {
+  outline: none;
+  border-color: #007acc;
+}
+
+.translate-btn {
+  margin: 0 0 0 auto;
+  padding: 0;
+  width: 64px;
+  height: 28px;
+  font-size: 16px;
+  background: #007acc;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  font-weight: bold;
+}
+
+.translate-btn:hover {
+  background: #005a9e;
+}
+
+.translate-btn:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .editors-header-flex {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .editor-title-panel {
+    border-right: none;
+    border-bottom: 1px solid #404040;
+    height: 32px;
+  }
+
+  .editor-title-panel:last-child {
+    border-bottom: none;
+  }
+
+  .translate-btn {
+    width: 40px;
+    height: 32px;
+  }
+}
