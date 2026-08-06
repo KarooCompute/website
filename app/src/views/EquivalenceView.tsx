@@ -2,12 +2,15 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import AnsiToHtml from 'ansi-to-html'
 import { fetchSample, fetchSamples, postEquivalence } from '../api/client'
 import { TabBar } from '../components/layout/TabBar'
+import { ReportSummaryLine } from '../components/layout/ReportSummaryLine'
 import { DualEditorLayout } from '../components/layout/DualEditorLayout'
 import { EditorPane } from '../components/editor/EditorPane'
 import { EquivalenceDetailShell } from '../components/topo-smt/EquivalenceDetailShell'
 import { TopoSmtReportViewer } from '../components/topo-smt/TopoSmtReportViewer'
 import { MatchListView } from '../components/match-list/MatchListView'
 import { EquivalenceHeader } from '../equivalence/EquivalenceHeader'
+import { coerceDebug, coerceReport } from '../utils/coerceEquivalencePayload'
+import { mergeReportAndDebug } from '../utils/roseReportTransform'
 import {
   getLeftLanguage,
   getRightLanguage,
@@ -41,17 +44,6 @@ function normalizeErrors(errors: unknown): string[] {
   }
 }
 
-function reportFromErrors(errors: string[]): RoseReport {
-  return {
-    global_errors: errors,
-    eq_report: {
-      matches: [],
-      unmatched_src: [],
-      unmatched_tgt: [],
-    },
-  }
-}
-
 export const EquivalenceView: React.FC = () => {
   const [blockDebugTab, setBlockDebugTab] = useState<BlockDebugTabType>('source_code')
   const [selectedId, setSelectedId] = useState<FunctionId | null>(null)
@@ -59,6 +51,7 @@ export const EquivalenceView: React.FC = () => {
   const [selectedSample, setSelectedSample] = useState('')
   const [cCode, setCCode] = useState('// C code for equivalence\n')
   const [rCode, setRCode] = useState('// Rust code for equivalence\n')
+  const [rawReport, setRawReport] = useState<RoseReport | null>(null)
   const [debugInfo, setDebugInfo] = useState<DebugInfo | null>(null)
   const [result, setResult] = useState<boolean | null>(null)
   const [errors, setErrors] = useState<string[]>([])
@@ -70,10 +63,6 @@ export const EquivalenceView: React.FC = () => {
   const ansiConverter = useMemo(() => new AnsiToHtml({ escapeXML: true }), [])
   const workspace = debugInfo?.workspace ?? null
   const workspaceKey = String(runId)
-  const errorsReport = useMemo(
-    () => (result === null && errors.length === 0 ? null : reportFromErrors(errors)),
-    [errors, result],
-  )
 
   const resolverState: ContentResolverState = {
     blockDebugTab,
@@ -111,6 +100,8 @@ export const EquivalenceView: React.FC = () => {
     setSelectedSample(name)
     setResult(null)
     setErrors([])
+    setRawReport(null)
+    setDebugInfo(null)
     setShowErrorPopover(false)
     if (!name) return
 
@@ -134,16 +125,27 @@ export const EquivalenceView: React.FC = () => {
         r_code: rCode,
         mapping_yaml: '',
       })
+      const report = coerceReport(response.report)
+      const debug = coerceDebug(response.debug)
+      const merged = report
+        ? mergeReportAndDebug(report, debug)
+        : (response.debug_info ?? null)
+
       const nextErrors = normalizeErrors(response.errors)
-      setErrors(nextErrors)
-      setDebugInfo(response.debug_info ?? null)
-      setResult(nextErrors.length === 0)
+      const badgeErrors =
+        nextErrors.length > 0 ? nextErrors : (report?.global_errors ?? [])
+
+      setRawReport(report)
+      setDebugInfo(merged)
+      setErrors(badgeErrors)
+      setResult(badgeErrors.length === 0)
       setRunId((id) => id + 1)
       setSelectedId(null)
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err)
       setErrors([msg])
       setResult(false)
+      setRawReport(null)
       setDebugInfo(null)
       setRunId((id) => id + 1)
       setSelectedId(null)
@@ -222,7 +224,7 @@ export const EquivalenceView: React.FC = () => {
     leftPane = (
       <EditorPane
         mode="errors"
-        report={errorsReport}
+        report={rawReport}
         ansiConverter={ansiConverter}
         editorReadOnly
       />
@@ -252,6 +254,7 @@ export const EquivalenceView: React.FC = () => {
         tabs={debugTabs}
         activeTab={blockDebugTab}
         onTabChange={setBlockDebugTab}
+        trailing={<ReportSummaryLine summary={rawReport?.summary} />}
       />
       <DualEditorLayout
         fullWidth={isFullWidthTab(resolverState)}

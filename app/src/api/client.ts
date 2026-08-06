@@ -9,6 +9,9 @@ export interface SampleData {
 
 export interface EquivalenceResponse {
   errors?: unknown
+  report?: unknown
+  debug?: unknown
+  /** Kept for backward compat; only used if `report` is absent. */
   debug_info?: DebugInfo
 }
 
@@ -29,7 +32,7 @@ export async function postEquivalence(body: {
   r_code: string
   mapping_yaml: string
 }): Promise<EquivalenceResponse> {
-  const response = await fetch(`${API_BASE}/api/equivalence`, {
+  const response = await fetch(`${API_BASE}/api/equivalence?include=debug,report`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),

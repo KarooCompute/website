@@ -120,9 +120,7 @@ function normalizeEqReport(raw: unknown): EqReport {
   }
 }
 
-export function parseReportYaml(content: string): ParseReportResult {
-  const parsed = loadYaml(content)
-
+export function normalizeReportDocument(parsed: unknown): ParseReportResult {
   if (!isRecord(parsed)) {
     throw new Error('Report YAML must be a mapping at the top level.')
   }
@@ -155,4 +153,8 @@ export function parseReportYaml(content: string): ParseReportResult {
       total: typeof summary?.total === 'number' ? summary.total : null,
     },
   }
+}
+
+export function parseReportYaml(content: string): ParseReportResult {
+  return normalizeReportDocument(loadYaml(content))
 }

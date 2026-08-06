@@ -55,9 +55,7 @@ function normalizeTopoReport(raw: unknown): TopoSmtReport | null {
   }
 }
 
-export function parseDebugYaml(content: string): ParsedDebugFile {
-  const parsed = loadYaml(content)
-
+export function normalizeDebugDocument(parsed: unknown): ParsedDebugFile {
   if (!isRecord(parsed)) {
     throw new Error('Debug YAML must be a mapping at the top level.')
   }
@@ -70,4 +68,8 @@ export function parseDebugYaml(content: string): ParsedDebugFile {
     rhs,
     topo_smt_report: normalizeTopoReport(parsed.topo_smt_report),
   }
+}
+
+export function parseDebugYaml(content: string): ParsedDebugFile {
+  return normalizeDebugDocument(loadYaml(content))
 }
