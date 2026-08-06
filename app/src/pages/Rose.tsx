@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function Rose() {
   return (
     <section className="band">
@@ -12,6 +14,11 @@ function Rose() {
         </p>
         <p>
           Rose is still under development, and not publicly available yet.
+        </p>
+        <p className="hero-actions">
+          <Link to="/rose/demo" className="btn">
+            Launch demo
+          </Link>
         </p>
       </div>
     </section>

@@ -1,0 +1,162 @@
+.equivalence-detail-shell {
+  flex: 1 1 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  background: #1e1e1e;
+  position: relative;
+}
+
+.equivalence-detail-navigator {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.debug-panel {
+  flex: 0 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  background: #252526;
+  border-left: 1px solid #404040;
+  overflow: hidden;
+  min-width: 240px;
+  max-width: 75%;
+}
+
+.debug-panel-resizer {
+  flex: 0 0 6px;
+  width: 6px;
+  cursor: col-resize;
+  background: transparent;
+  position: relative;
+  touch-action: none;
+}
+
+.debug-panel-resizer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 2px;
+  width: 2px;
+  background: #404040;
+  transition: background 0.15s;
+}
+
+.debug-panel-resizer:hover::after,
+.debug-panel-resizer:active::after {
+  background: #007acc;
+}
+
+.debug-panel-content {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.debug-panel-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  background: #2d2d2d;
+  border-bottom: 1px solid #404040;
+  flex-shrink: 0;
+  gap: 4px;
+}
+
+.debug-panel-close {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: #aaa;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.debug-panel-close:hover {
+  background: #3c3c3c;
+  color: #fff;
+}
+
+.debug-panel-body {
+  flex: 1 1 0;
+  overflow: auto;
+  min-height: 0;
+}
+
+.debug-panel-body .smt-ansi {
+  margin: 0;
+  padding: 12px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.topo-smt-approx {
+  color: #888;
+  margin: 0 4px;
+  user-select: none;
+}
+
+.topo-smt-no-log {
+  padding: 12px;
+  color: #888;
+}
+
+.func-bubble {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 500;
+}
+
+button.func-bubble {
+  border: none;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  appearance: none;
+}
+
+.func-bubble.src {
+  background-color: #1976d2;
+}
+
+.func-bubble.tgt {
+  background-color: #388e3c;
+}
+
+.func-bubble.navigable {
+  cursor: pointer;
+}
+
+.func-bubble.navigable:hover,
+.func-bubble.navigable:focus-visible {
+  filter: brightness(1.12);
+  outline: 1px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 1px;
+}

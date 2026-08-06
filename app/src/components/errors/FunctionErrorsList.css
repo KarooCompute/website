@@ -1,0 +1,16 @@
+.function-errors-list-view {
+  height: 100%;
+  overflow: auto;
+  padding: 12px 16px;
+  background: #1e1e1e;
+  box-sizing: border-box;
+}
+
+.function-errors-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #888;
+  font-size: 13px;
+}

@@ -1,0 +1,32 @@
+/* TopoSmt graph navigator (panel chrome lives in EquivalenceDetailShell.css) */
+.topo-smt-graph-host {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.topo-smt-graph {
+  height: 100%;
+  width: 100%;
+  background:
+    linear-gradient(#252525 1px, transparent 1px),
+    linear-gradient(90deg, #252525 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-color: #1a1a1a;
+}
+
+.topo-smt-empty {
+  padding: 16px;
+  color: #888;
+}
+
+.topo-smt-empty-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
