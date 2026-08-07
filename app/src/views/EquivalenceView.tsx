@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import AnsiToHtml from 'ansi-to-html'
 import { fetchSample, fetchSamples, postEquivalence } from '../api/client'
 import { TabBar } from '../components/layout/TabBar'
@@ -23,6 +23,10 @@ import {
 import type { BlockDebugTabType, DebugInfo, FunctionId, RoseReport } from '../types'
 import './EquivalenceView.css'
 
+export interface EquivalenceViewProps {
+  headerLeading?: ReactNode
+}
+
 function normalizeErrors(errors: unknown): string[] {
   if (errors == null) return []
   if (typeof errors === 'string') return errors.trim() ? [errors] : []
@@ -44,7 +48,7 @@ function normalizeErrors(errors: unknown): string[] {
   }
 }
 
-export const EquivalenceView: React.FC = () => {
+export const EquivalenceView: React.FC<EquivalenceViewProps> = ({ headerLeading }) => {
   const [blockDebugTab, setBlockDebugTab] = useState<BlockDebugTabType>('source_code')
   const [selectedId, setSelectedId] = useState<FunctionId | null>(null)
   const [samples, setSamples] = useState<string[]>([])
@@ -235,6 +239,7 @@ export const EquivalenceView: React.FC = () => {
   return (
     <>
       <EquivalenceHeader
+        leading={headerLeading}
         samples={samples}
         selectedSample={selectedSample}
         onSampleChange={(e) => {

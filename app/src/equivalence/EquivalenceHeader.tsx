@@ -1,7 +1,9 @@
+import type { ReactNode } from 'react'
 import { EquivalenceResultBadge } from './EquivalenceResultBadge'
 import './EquivalenceHeader.css'
 
 export interface EquivalenceHeaderProps {
+  leading?: ReactNode
   samples: string[]
   selectedSample: string
   onSampleChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
@@ -15,6 +17,7 @@ export interface EquivalenceHeaderProps {
 }
 
 export const EquivalenceHeader: React.FC<EquivalenceHeaderProps> = ({
+  leading,
   samples,
   selectedSample,
   onSampleChange,
@@ -28,6 +31,7 @@ export const EquivalenceHeader: React.FC<EquivalenceHeaderProps> = ({
 }) => (
   <div className="editors-header-flex">
     <div className="editor-title-panel editor-title-panel-actions">
+      {leading}
       <h2>Sample</h2>
       <select value={selectedSample} onChange={onSampleChange} className="inline-selector">
         <option value="">Select sample...</option>
