@@ -57,8 +57,7 @@
   min-width: fit-content;
   height: 28px;
   box-sizing: border-box;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: normal;
   position: relative;
   border-radius: 0;
 }

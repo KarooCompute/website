@@ -35,8 +35,7 @@
   color: #aaa;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  letter-spacing: normal;
 }
 
 .vertical-split-pane-label.src {

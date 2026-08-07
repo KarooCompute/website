@@ -75,7 +75,7 @@ export const EquivalenceView: React.FC<EquivalenceViewProps> = ({ headerLeading 
 
   const debugTabs: { id: BlockDebugTabType; label: string }[] = [
     { id: 'source_code', label: 'Source Code' },
-    { id: 'topo_smt_report', label: 'TopoSmt' },
+    { id: 'topo_smt_report', label: 'TopoSMT' },
     { id: 'match_list', label: 'List' },
     { id: 'errors', label: 'Errors' },
   ]
