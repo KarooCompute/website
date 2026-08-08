@@ -10,6 +10,9 @@ import './App.css'
 function SiteLayout() {
   return (
     <div className="app-layout">
+      <div className="site-ambient" aria-hidden>
+        <div className="site-ambient-grain" />
+      </div>
       <Navbar />
       <main>
         <Outlet />
