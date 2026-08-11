@@ -78,6 +78,10 @@ function Rose() {
             </ul>
           </p>
         </div>
+      
+        <div className="info-box">
+          
+        </div>
       </div>
     </section>
   )

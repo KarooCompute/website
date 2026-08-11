@@ -314,6 +314,45 @@
   margin-bottom: 0;
 }
 
+.project-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-item + .project-item {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+}
+
+.project-item-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.project-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.project-meta {
+  flex: 0 0 auto;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.project-desc {
+  margin: 0.35rem 0 0 0;
+  font-size: 0.98rem;
+  color: var(--muted);
+  opacity: 1;
+  line-height: 1.5;
+}
+
 /* Content sections */
 .content-section h1 {
   font-size: 2.5rem;
@@ -351,6 +390,14 @@
   margin-bottom: 0;
 }
 
+.content-section .project-desc {
+  margin: 0.35rem 0 0 0;
+  font-size: 0.98rem;
+  color: var(--muted);
+  opacity: 1;
+  line-height: 1.5;
+}
+
 /* Bio Card */
 .bio-card {
   display: grid;
@@ -358,7 +405,7 @@
   grid-template-areas:
     "avatar header"
     "avatar text"
-    "avatar links";
+    "avatar meta";
   gap: 1rem;
   padding: 1rem;
   border-radius: 12px;
@@ -402,8 +449,13 @@
   margin: 0 0 .75rem 0;
   color: var(--text);
 }
+.bio-meta,
 .bio-links {
-  grid-area: links;
+  grid-area: meta;
+}
+.bio-meta {
+  margin: 0;
+  color: var(--muted);
 }
 .bio-links a {
   color: var(--accent);
@@ -415,7 +467,7 @@
     grid-template-areas:
       "avatar header"
       "text text"
-      "links links";
+      "meta meta";
   }
   .bio-avatar {
     width: 80px;
