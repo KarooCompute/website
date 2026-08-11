@@ -177,6 +177,7 @@ export const EquivalenceView: React.FC<EquivalenceViewProps> = ({ headerLeading 
     leftPane = (
       <EditorPane
         mode="editor"
+        title="C"
         editorValue={cCode}
         editorLanguage={getLeftLanguage(resolverState)}
         editorReadOnly={false}
@@ -186,6 +187,7 @@ export const EquivalenceView: React.FC<EquivalenceViewProps> = ({ headerLeading 
     rightPane = (
       <EditorPane
         mode="editor"
+        title="Rust"
         editorValue={rCode}
         editorLanguage={getRightLanguage(resolverState)}
         editorReadOnly={false}

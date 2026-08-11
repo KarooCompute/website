@@ -9,6 +9,7 @@ export type EditorPaneMode = 'editor' | 'errors'
 
 export interface EditorPaneProps {
   mode: EditorPaneMode
+  title?: string
   report?: RoseReport | null
   ansiConverter?: AnsiToHtml
   editorValue?: string
@@ -20,6 +21,7 @@ export interface EditorPaneProps {
 
 export const EditorPane: React.FC<EditorPaneProps> = ({
   mode,
+  title,
   report,
   editorValue = '',
   editorLanguage = 'json',
@@ -32,6 +34,7 @@ export const EditorPane: React.FC<EditorPaneProps> = ({
 
   return (
     <div className="editor-content">
+      {title ? <div className="editor-pane-heading">{title}</div> : null}
       {showErrors ? (
         <ReportErrorsView report={report} />
       ) : showEditor ? (
