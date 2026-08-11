@@ -33,6 +33,8 @@ jobs:
 
       - name: Build
         working-directory: app
+        env:
+          VITE_API_URL: https://api.karoocompute.com
         run: npm run build
 
       - name: SPA fallback for GitHub Pages
