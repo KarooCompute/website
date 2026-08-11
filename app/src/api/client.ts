@@ -1,6 +1,6 @@
 import type { DebugInfo } from '../types'
 
-const API_BASE = import.meta.env.VITE_API_URL ?? 'https://api.karoocompute.com'
+const API_BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:3000'
 
 export interface SampleData {
   c_code: string

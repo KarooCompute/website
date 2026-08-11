@@ -51,8 +51,6 @@ export const EquivalenceHeader: React.FC<EquivalenceHeaderProps> = ({
         onRun={onRun}
       />
     </div>
-    <div className="editor-title-panel">
-      <h2>Rust Input</h2>
-    </div>
+    <div className="editor-title-panel" aria-hidden />
   </div>
 )
