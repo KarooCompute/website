@@ -29,7 +29,7 @@ function Rprop() {
 
           <p>
             The rprop library allows users to write propositional logic statements in Rust, using a procedural macro system.
-            Users can make propositions, along with claims, where claims will be checked at compile time.
+            Users can make propositions and claims, where claims must be accompanied by proofs that will be checked at compile time.
           </p>
 
           <CodeBlock code={RPROP_EXAMPLE} />
@@ -41,7 +41,7 @@ function Rprop() {
           <p>
             MyTheorem makes the claim that D can be derived from A and B. Claims require proofs, otherwise a compilation error is raised.
             The my_theorem function is annotated with{' '}
-            <code className="code-inline">#[prove(MyTheorem)]</code>, to satisfy the proof requirement.
+            <code className="code-inline">#[prove(MyTheorem)]</code>, to satisfy the claim's proof requirement.
           </p>
 
           <p>
@@ -59,18 +59,18 @@ function Rprop() {
             <h2>Why?</h2>
           </div>
           <p>
-            This library was the output of ~1 week of blue-sky research and development, looking for a simple way to formalise program requirements.
+            This library is the result of ~1 week of blue-sky research and development, aimed at finding a simple way to formalise architectural requirements.
           </p>
           <p>
-            I used rprop to draft some changes to the IR pipeline used in <Link to="/rose">Rose</Link>.
+            I made use of rprop to draft some changes to the IR pipeline used in <Link to="/rose">Rose</Link>.
             I used atomic propositions to represent individual IR properties, and conjunctions of those properties to represent the IR's themselves.
-            Lifting stages were represented as claims, taking the prior IR, along with the properties it introduces, as input, and returning the new IR as output.
-            This representation made all the properties of significance explicit, making it easier to reason about changes to the pipeline.
+            Lifting stages were represented as claims. Each stage would take the prior IR, along with the properties it introduced, as input, and returned the new IR as output.
+            This representation allowed me to make all the important properties explicit, making it easier to reason about changes to the pipeline.
           </p>
           <p>
-            The fundamental problem I tried to solve, was to alleviate the risk of silently dropping a requirement, by having the compiler scream at me instead.
+            The fundamental problem I tried to solve, was to alleviate the risk of silently dropping a requirement, by having a compiler shout at me instead.
             Propositional logic is a good fit for linear pipelines, such as Rose's semantic extraction, but may be difficult to apply to stateful or cyclic systems.
-            Such cases would benefit from the increased expressive power of first-order logic.
+            Modeling such systems would be easier with the increased expressive power of first-order logic, which goes beyond the scope of this library.
           </p>
         </div>
 
