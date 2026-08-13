@@ -75,14 +75,7 @@ function Home() {
               </li>
               <li className="project-item">
                 <div className="project-item-top">
-                  <a
-                    href="https://crates.io/crates/rprop"
-                    className="project-title"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    rprop
-                  </a>
+                  <Link to="/rprop" className="project-title">rprop</Link>
                   <span className="project-meta"><Link to="https://crates.io/crates/rprop" target="_blank" rel="noopener noreferrer">crates.io</Link></span>
                 </div>
                 <p className="project-desc">

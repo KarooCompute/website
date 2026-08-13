@@ -8,8 +8,8 @@ function Navbar() {
           Kaleb Bruwer
         </Link>
         <div className="nav-links">
-          <NavLink to="/" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>Home</NavLink>
           <NavLink to="/rose" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>Rose</NavLink>
+          <NavLink to="/rprop" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>rprop</NavLink>
         </div>
       </div>
     </header>

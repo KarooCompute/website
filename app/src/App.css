@@ -410,6 +410,47 @@
   color: color-mix(in srgb, var(--accent) 80%, white);
 }
 
+.code-block {
+  display: block;
+  margin: 1rem 0 0 0;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  background: var(--bg);
+  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  white-space: pre;
+  tab-size: 4;
+}
+
+.code-block code {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+.code-inline {
+  display: inline;
+  padding: 0.15em 0.4em;
+  margin: 0 0.05em;
+  background: var(--bg);
+  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+.info-box > .code-block:first-child {
+  margin-top: 0;
+}
+
 /* Content sections */
 .content-section h1 {
   font-size: 2.5rem;

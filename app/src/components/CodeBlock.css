@@ -1,0 +1,25 @@
+.code-block-rust {
+  padding: 0.35rem 0;
+}
+
+.code-block-rust .cm-editor {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.92rem;
+}
+
+.code-block-rust .cm-scroller {
+  overflow: auto !important;
+  font-family: inherit;
+}
+
+.code-block-rust .cm-content {
+  padding: 0.65rem 1.15rem;
+}
+
+.code-block-rust .cm-gutters {
+  display: none;
+}
+
+.code-block-rust .cm-focused {
+  outline: none;
+}
