@@ -10,7 +10,7 @@ function Home() {
           <p className="hero-subtitle">Software Engineer</p>
           <p className="hero-actions">
             <a
-              href={`${import.meta.env.BASE_URL}CV_2026.pdf`}
+              href={`${import.meta.env.BASE_URL}CV_Kaleb_Bruwer.pdf`}
               className="btn"
               download
             >
