@@ -27,9 +27,9 @@ function Home() {
               <h2>About me</h2>
             </div>
             <p>
-              I specialize in compiler technology, program analysis, and formal methods.
-              I have experience designing semantic analysis pipelines, intermediate representations, and applying automated theorem proving to software verification.
-              I have also worked in enterprise software development, workflow systems, and backend services.
+              I am a Software Engineer with professional experience in the full software development life cycle, including design, implementation, testing and maintenance. 
+              I have further experience in compiler technology, program analysis, and formal methods,
+              including the design of semantic analysis pipelines, intermediate representations, and applying automated theorem proving to software verification.
             </p>
             <p>
               My most recent work has been on Rose, about which you can read more under projects.
